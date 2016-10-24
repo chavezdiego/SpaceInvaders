@@ -45,6 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Disparos.cs" />
+    <Compile Include="EnegCircular.cs" />
+    <Compile Include="EnegHorizontal.cs" />
+    <Compile Include="EnegLibre.cs" />
+    <Compile Include="EnegVertical.cs" />
     <Compile Include="Enemigo.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -53,6 +57,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Graficos.cs" />
+    <Compile Include="JefeFinal.cs" />
     <Compile Include="Jugador.cs" />
     <Compile Include="PrimerEscenario.cs" />
     <Compile Include="Program.cs" />
@@ -82,7 +87,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagenes\FondoSpace.jpg" />
+    <Content Include="Imagenes\FondoSpaceInvaders.png" />
     <Content Include="Imagenes\InvadersEng.png" />
+    <Content Include="Imagenes\JefeFinal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

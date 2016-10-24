@@ -5,34 +5,24 @@ using System.Text;
 
 namespace SpaceInvaders
 {
-    class Enemigo
+    abstract class Enemigo
     {
-        Punto pos = new Punto();
+        protected Punto pos = new Punto();
+
+        protected List<Disparos> LDisparos = new List<Disparos>();
 
         public Enemigo(int x,int y)
         {
             pos.y = y;
             pos.x = x;
         }
-        
-        int dir=0;
 
-        public void Mover()
-        {
-            switch (dir)
-	        {
-                case 0: pos.x+=3;
-                        break;
+        protected int w = 25;
+        protected int h = 25;
+        protected int dir=0;
 
-                case 1: pos.x-=3;
-                        break;
-	        }
-
-            if (pos.x >= 780) dir = 1;
-            if (pos.x <= 1) dir = 0;
-            
-        }
-
+        abstract public void Mover();
+       
         public int ObtenerX()
         {
             return pos.x;
@@ -41,6 +31,27 @@ namespace SpaceInvaders
         public int ObtenerY()
         {
             return pos.y;
+        }
+
+        public int ObtenerW()
+        {
+            return w;
+        }
+
+        public int ObtenerH()
+        {
+            return h;
+        }
+        public bool intersectaDispJugador()
+        {
+            if (Jugador.DispIntersecta(pos.x, pos.y, w, h))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

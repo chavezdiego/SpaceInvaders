@@ -10,7 +10,7 @@ namespace SpaceInvaders
     {
 
         static List<Disparos> LDisparos = new List<Disparos>();
-        static Punto pos = new Punto(400,350);
+        static Punto pos = new Punto(200, -1900);
         static int stepX, stepY;
 
         private Jugador()
@@ -33,6 +33,17 @@ namespace SpaceInvaders
             pos.y += stepY;
         }
 
+        static int vidas = 1;
+        static public int Vidas()
+        {
+            return vidas;
+        }
+
+        static public void VidasMenos()
+        {
+            vidas--;
+        }
+
         static public int ObtenerX()
         {
             return pos.x;
@@ -51,6 +62,29 @@ namespace SpaceInvaders
             {
                 disp.Mover();
             }
+        }
+
+        static public bool DispIntersecta(int x,int y,int w,int h)
+        {
+            foreach (Disparos disp in LDisparos)
+            {
+                if (disp.ObtenerX() >= x && disp.ObtenerX() < (x + w) && disp.ObtenerY() >= y - 1 && disp.ObtenerY() < (y + h))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        static public bool IntersectaEneg(Enemigo neg)
+        {
+
+            if (pos.x >= neg.ObtenerX() && pos.x < (neg.ObtenerX() + neg.ObtenerW()) && pos.y >= neg.ObtenerY() - 1 && pos.y < (neg.ObtenerY() + neg.ObtenerH()))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

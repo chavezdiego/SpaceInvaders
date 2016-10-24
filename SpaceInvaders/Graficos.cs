@@ -12,23 +12,13 @@ namespace SpaceInvaders
         {
                 
         }
-        static int posX = 400, posY = 350;
-        static double count = 0;
-        static double fi = 1.0;
+        
         static List<Disparos> ListDisp = new List<Disparos>();
         static List<Enemigo> ListEneg = new List<Enemigo>();
-        static Bitmap bmp = new Bitmap(800, 600);
-         
-        static public void CambiarYjug(int yjug)
-        {
-            posY = yjug;
-        }
+        static Bitmap bmp = new Bitmap(800, 2000);
 
-        static public void CambiarXjug(int xjug)
-        {
-            posX = xjug;
-        }
-
+        static int seguimientoY = 0;
+        static int PreseguimientoY = 0;
         static public Bitmap Dibujar() 
         {
             
@@ -36,21 +26,37 @@ namespace SpaceInvaders
 
             //Fondo negro
 
-            g.FillRectangle(Brushes.Black, new Rectangle(0, 0, 800, 600));
+            if (Jugador.ObtenerY()>=-1850)
+            {
+                PreseguimientoY = Jugador.ObtenerY();
+                seguimientoY =  1850 + PreseguimientoY;
+            }
 
+            //g.FillRectangle(Brushes.Black, new Rectangle(0, 0, 1000, 600));
+            g.DrawImage(Image.FromFile("C:\\Users\\Diego\\Documents\\GitHub\\SpaceInvaders\\SpaceInvaders\\Imagenes\\FondoSpaceInvaders.png"), new Rectangle(0, -1400+seguimientoY, 800, 2000));//-1800+seguimientoY     -1400=0
+
+            
             //Enemigo "Nave"
 
             ListEneg = PrimerEscenario.ObtenerList();
+            
 
             foreach (Enemigo neg in ListEneg)
             {
-                g.DrawImage(Image.FromFile("C:\\Users\\Diego\\Documents\\Visual Studio 2012\\Projects\\SpaceInvaders\\SpaceInvaders\\Imagenes\\InvadersEng.png"), new Rectangle(neg.ObtenerX(), neg.ObtenerY(), 25, 25));
-    
+                if (neg is JefeFinal)
+                {
+                    g.DrawImage(Image.FromFile("C:\\Users\\Diego\\Documents\\GitHub\\SpaceInvaders\\SpaceInvaders\\Imagenes\\JefeFinal.png"), new Rectangle(neg.ObtenerX(), -neg.ObtenerY()+seguimientoY, neg.ObtenerW(), neg.ObtenerH()));
+
+                }
+                else
+                {
+                    g.DrawImage(Image.FromFile("C:\\Users\\Diego\\Documents\\Visual Studio 2012\\Projects\\SpaceInvaders\\SpaceInvaders\\Imagenes\\InvadersEng.png"), new Rectangle(neg.ObtenerX(), -neg.ObtenerY()+seguimientoY, neg.ObtenerW(), neg.ObtenerH()));
+                }
             }
 
             //Jugador "Nave"
 
-            g.FillRectangle(Brushes.Red, new Rectangle(Jugador.ObtenerX(), Jugador.ObtenerY(), 20, 20));
+            g.FillRectangle(Brushes.Red, new Rectangle(Jugador.ObtenerX(), -Jugador.ObtenerY(), 20, 20));
 
             //Disparos Jugador
 
@@ -61,15 +67,34 @@ namespace SpaceInvaders
                 g.FillRectangle(Brushes.White, new Rectangle(disp.ObtenerX(), disp.ObtenerY(), 10, 10));    
             }
 
-            //Movimiento circular
+            //-----------------Intersectas-----------------
 
-            fi = (count * Math.PI) / 10;
+            //Intersecta de disparos de jugador a enemigos
 
-            //y = (int)(y_inic + 100 * Math.Sin(fi));
+            foreach (Enemigo neg in ListEneg)
+            {
+                if (neg.intersectaDispJugador())
+                {
+                    ListEneg.Remove(neg);
+                    break;
+                }
+            }
 
-           // x = (int)(x_inic + 100 * Math.Cos(fi));
+            //Intersecta del enemigo con el jugador
 
-            count++;
+            foreach (Enemigo neg in ListEneg)
+            {
+                //if (j1.intersectaDisp(neg))
+                //{
+                //    vidas--;
+                //}
+
+                if (Jugador.IntersectaEneg(neg))
+                {
+                    Jugador.VidasMenos();
+                }
+            }
+            seguimientoY = 0;
 
             return bmp;
 

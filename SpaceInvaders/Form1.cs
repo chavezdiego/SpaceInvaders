@@ -40,11 +40,12 @@ namespace SpaceInvaders
             }
             if (e.KeyCode==Keys.Up)
             {
-                stepY = -10;
+                stepY = +10;
+                
             }
             if (e.KeyCode == Keys.Down)
             {
-                stepY = +10;
+                stepY = -10;
             }
             if (e.KeyCode == Keys.S)
             {
@@ -72,6 +73,11 @@ namespace SpaceInvaders
         private void tmrEnemigos_Tick(object sender, EventArgs e)
         {
             PrimerEscenario.Mover();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Jugador.Vidas().ToString());
         }
 
 

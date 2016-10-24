@@ -30,7 +30,7 @@ namespace SpaceInvaders
 
         public void Mover()
         {
-            y-=3;
+            y-=8;
         }
 
     }

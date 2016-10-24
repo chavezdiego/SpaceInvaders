@@ -15,9 +15,13 @@ namespace SpaceInvaders
 
         static public void MapaCargar()
         {
-            LEneg.Add(new Enemigo(100,50));
-            LEneg.Add(new Enemigo(200,150));
-            LEneg.Add(new Enemigo(300,200));
+            LEneg.Add(new EnegHorizontal(100,1300));
+            LEneg.Add(new EnegHorizontal(200,50));
+            LEneg.Add(new JefeFinal(200,1550));
+        //    LEneg.Add(new EnegHorizontal(300,200));
+        //    LEneg.Add(new EnegVertical(200,50));
+        //    LEneg.Add(new EnegLibre(200,50));
+        //    LEneg.Add(new EnegCircular(400,300));
         }
         static public List<Enemigo> ObtenerList()
         {
