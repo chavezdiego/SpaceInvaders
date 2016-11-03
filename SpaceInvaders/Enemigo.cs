@@ -11,10 +11,14 @@ namespace SpaceInvaders
 
         protected List<Disparos> LDisparos = new List<Disparos>();
 
-        public Enemigo(int x,int y)
+        protected int y;
+
+        public Enemigo(int x,int yinic)
         {
-            pos.y = y;
+            pos.y = yinic;
             pos.x = x;
+
+           
         }
 
         protected int w = 25;
@@ -44,7 +48,7 @@ namespace SpaceInvaders
         }
         public bool intersectaDispJugador()
         {
-            if (Jugador.DispIntersecta(pos.x, pos.y, w, h))
+            if (Jugador.DispIntersecta(pos.x, y, w, h))
             {
                 return true;
             }

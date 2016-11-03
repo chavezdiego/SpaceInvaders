@@ -10,8 +10,8 @@ namespace SpaceInvaders
     {
 
         static List<Disparos> LDisparos = new List<Disparos>();
-        static Punto pos = new Punto(200, -1900);
-        static int stepX, stepY;
+        static Punto pos = new Punto(200, 2300);
+        static int stepX, stepY, Ygrafico = pos.y - 1800;
 
         private Jugador()
         {
@@ -30,7 +30,8 @@ namespace SpaceInvaders
         static public void Mover(int stepX, int stepY)
         {
             pos.x += stepX;
-            pos.y += stepY;
+            pos.y -= stepY;
+            Ygrafico += stepY;
         }
 
         static int vidas = 1;
@@ -52,6 +53,18 @@ namespace SpaceInvaders
         {
             return pos.y;
         }
+        static public int ObtenerYGrafico()
+        {
+            return Ygrafico;
+        }
+        static public void ModificarY(int y)
+        {
+            pos.y = y;
+        }
+        static public void ModificarYGrafico(int y)
+        {
+            Ygrafico = y;
+        }
         static public void CrearDisparo()
         {
             LDisparos.Add(new Disparos(pos.x, pos.y));
@@ -61,6 +74,11 @@ namespace SpaceInvaders
             foreach (Disparos disp in LDisparos)
             {
                 disp.Mover();
+                if (Calibracion.CalibrarY(disp.ObtenerY()) <= 5)
+                {
+                    LDisparos.Remove(disp);
+                    break;
+                }
             }
         }
 

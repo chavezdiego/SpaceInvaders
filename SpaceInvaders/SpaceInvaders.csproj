@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calibracion.cs" />
     <Compile Include="Disparos.cs" />
     <Compile Include="EnegCircular.cs" />
     <Compile Include="EnegHorizontal.cs" />
