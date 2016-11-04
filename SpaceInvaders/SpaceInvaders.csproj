@@ -88,10 +88,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Imagenes\Enemigo2.png" />
     <Content Include="Imagenes\FondoSpace.jpg" />
     <Content Include="Imagenes\FondoSpaceInvaders.png" />
     <Content Include="Imagenes\InvadersEng.png" />
     <Content Include="Imagenes\JefeFinal.png" />
+    <Content Include="Imagenes\nave.png" />
+    <Content Include="Imagenes\naveenemiga.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
