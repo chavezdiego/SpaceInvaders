@@ -13,6 +13,7 @@ namespace SpaceInvaders
 
         }
 
+
         override public void Mover()
         {
             switch (dir)

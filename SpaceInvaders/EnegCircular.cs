@@ -9,6 +9,8 @@ namespace SpaceInvaders
     {
         public EnegCircular(int x,int y):base( x,  y)
         {
+            w = 100;
+            h = 100;
         }
 
         double count = 0;

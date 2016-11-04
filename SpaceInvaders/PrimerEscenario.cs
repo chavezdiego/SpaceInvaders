@@ -23,9 +23,8 @@ namespace SpaceInvaders
             LEneg.Add(new EnegHorizontal(100,-50));
             LEneg.Add(new EnegHorizontal(200,-50));
             LEneg.Add(new EnegVertical(100, -2000));
-         
             LEneg.Add(new EnegVertical(100, -20));
-        
+       
            */
         }
         static public List<Enemigo> ObtenerList()

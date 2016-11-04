@@ -9,6 +9,8 @@ namespace SpaceInvaders
     {
         public EnegHorizontal(int x,int y):base( x,  y)
         {
+            w = 100;
+            h = 100;
         }
 
         override public void Mover()

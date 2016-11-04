@@ -40,12 +40,12 @@ namespace SpaceInvaders
             }
             if (e.KeyCode==Keys.Up)
             {
-                stepY = -10;
+                stepY = +10;
                 
             }
             if (e.KeyCode == Keys.Down)
             {
-                stepY = +10;
+                stepY = -10;
             }
             if (e.KeyCode == Keys.S)
             {

@@ -13,16 +13,15 @@ namespace SpaceInvaders
 
         protected int y;
 
+
         public Enemigo(int x,int yinic)
         {
             pos.y = yinic;
             pos.x = x;
-
-           
         }
 
-        protected int w = 25;
-        protected int h = 25;
+        protected int w;
+        protected int h;
         protected int dir=0;
 
         abstract public void Mover();

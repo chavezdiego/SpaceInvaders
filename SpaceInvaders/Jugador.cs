@@ -10,8 +10,9 @@ namespace SpaceInvaders
     {
 
         static List<Disparos> LDisparos = new List<Disparos>();
-        static Punto pos = new Punto(200, 2300);
+        static Punto pos = new Punto(200, 400);
         static int stepX, stepY, Ygrafico = pos.y - 1800;
+        static int w = 200, h = 200;
 
         private Jugador()
         {
@@ -52,6 +53,14 @@ namespace SpaceInvaders
         static public int ObtenerY()
         {
             return pos.y;
+        }
+        static public int ObtenerW()
+        {
+            return w;
+        }
+        static public int ObtenerH()
+        {
+            return h;
         }
         static public int ObtenerYGrafico()
         {

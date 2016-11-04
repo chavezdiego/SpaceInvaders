@@ -14,8 +14,8 @@ namespace SpaceInvaders
 
         public Disparos(int px, int py)
         {
-            x = px;
-            y = py;
+            x = px+80;
+            y = py+25;
         }
 
         public int ObtenerX()
